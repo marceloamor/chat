@@ -6,7 +6,7 @@ import socket
 
 print("I am a server")
 
-s = socket.socket() 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('Socket created')
 
 s.bind(('localhost',9999))
@@ -18,6 +18,6 @@ while True:
     c, addr = s.accept()
     print('Connected with ', addr)
 
-    c.send('Welcome to the server')
+    c.send(bytes('Welcome to the server','utf-8'))
 
     c.close()
